@@ -2,12 +2,17 @@ import cvxpy as cp
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 从createImg.py中导入create_image函数并调用
-from createImg import create_image
+# 创建一个矩形来验证算法
+def create_square(size, side_length):
+    image = np.ones((size, size)) * 0.99
+    start = (size - side_length) // 2
+    end = start + side_length
+    image[start:end, start:end] = 0.01
+    return image
 
 size = 100
-radius = 30
-image = create_image(size, radius)
+side_length = 30
+image = create_square(size, side_length)
 
 # 创建一个cvxpy变量来表示分割矩阵
 x = cp.Variable(image.shape, boolean=True)
@@ -30,12 +35,12 @@ segmentation = x.value
 # 显示原始图像和分割后的图像并保存
 plt.subplot(1, 2, 1)
 plt.imshow(image, cmap='gray')
-plt.title('Original Image')
+plt.title('Original Square')
 plt.subplot(1, 2, 2)
 plt.imshow(segmentation, cmap='gray')
-plt.title('Segmented Image')
+plt.title('Segmented Square')
 plt.show()
 
 # 保存图像
-plt.imsave('image.png', image, cmap='gray')
-plt.imsave('segmented_image.png', segmentation, cmap='gray')
+plt.imsave('square.png', image, cmap='gray')
+plt.imsave('segmented_square.png', segmentation, cmap='gray')

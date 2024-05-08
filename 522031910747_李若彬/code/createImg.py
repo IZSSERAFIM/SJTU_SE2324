@@ -16,5 +16,5 @@ image = create_image(size, radius)
 
 # 使用matplotlib显示并保存图像
 # plt.imshow(image, cmap='gray')
-plt.axis('off')  # 不显示坐标轴
-plt.savefig('image.png', bbox_inches='tight', pad_inches = 0)
+# plt.axis('off')  # 不显示坐标轴
+# plt.savefig('image.png', bbox_inches='tight', pad_inches = 0)
