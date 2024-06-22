@@ -1,6 +1,7 @@
 import scipy.io
 import numpy as np
 
+# task1
 def load_data(file_path):
     data = scipy.io.loadmat(file_path)
     return data['paInput'], data['paOutput']
